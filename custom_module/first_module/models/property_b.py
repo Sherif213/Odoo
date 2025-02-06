@@ -1,9 +1,9 @@
 from odoo import models,fields
 
-class Property(models.Model):
-    _name = 'property'
-    _description = 'Property'
-    name = fields.Char(string='Property name')
+class PropertyB(models.Model):
+    _name = 'property.b'
+    _description = 'Property_b'
+    name = fields.Char(string='Property Name')
     description = fields.Text(string='Property Description')
     postcode = fields.Char(string='Postcode')
     date_availability = fields.Datetime(string='Date Availability')
