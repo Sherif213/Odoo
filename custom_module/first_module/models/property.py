@@ -1,11 +1,13 @@
-from odoo import models,fields
+from odoo import models,fields,api
+from odoo.exceptions import ValidationError
+
 
 class Property(models.Model):
     _name = 'property'
     _description = 'Property'
-    name = fields.Char(string='Property name')
+    name = fields.Char(string='Property name' ,required = 1 ,default = 'New')
     description = fields.Text(string='Property Description')
-    postcode = fields.Char(string='Postcode')
+    postcode = fields.Char(string='Postcode', required = 1 ,size = 6)
     date_availability = fields.Datetime(string='Date Availability')
     expected_price = fields.Float(string='Expected Price')
     selling_price = fields.Float(string='Selling Price')
@@ -20,4 +22,11 @@ class Property(models.Model):
         ('south','South'),
         ('east','East'),
         ('west','West'),
-    ])
+    ],default = 'north')
+
+
+    @api.constrains('bedrooms')
+    def _check_bedrooms_greater_zero(self):
+        for rec in self:
+           if rec.bedrooms == 0:
+               raise ValidationError('Bedrooms cannot be zero')
