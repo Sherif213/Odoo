@@ -24,9 +24,17 @@ class Property(models.Model):
         ('west','West'),
     ],default = 'north')
 
+    _sql_constraints = [
+        ('unique_for_name','unique("name")','The name must be unique.'),
+
+
+    ]
 
     @api.constrains('bedrooms')
     def _check_bedrooms_greater_zero(self):
         for rec in self:
            if rec.bedrooms == 0:
                raise ValidationError('Bedrooms cannot be zero')
+
+
+

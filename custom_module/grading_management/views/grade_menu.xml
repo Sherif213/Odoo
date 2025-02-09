@@ -1,0 +1,18 @@
+<odoo>
+
+
+
+
+
+
+    <record id="grading_action" models = "ir.actions.act_window">
+        <field name = "name">Add new grade</field>
+        <field name = "res_model">grade</field>
+    </record>
+    <menuitem
+        id = "grading_menu_item"
+        name = "Grade"
+        parent = "grade_menu"
+        action = "grading_action"
+    />
+</odoo>

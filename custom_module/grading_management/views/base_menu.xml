@@ -1,0 +1,14 @@
+<odoo>
+    <menuitem
+            id = "grade_management_root_menu"
+            name = "Grade Management"
+
+    />
+    <menuitem
+            id = "grade_menu"
+            name = "Grading"
+            parent = "grade_management_root_menu"
+
+    />
+
+</odoo>
