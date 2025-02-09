@@ -76,12 +76,9 @@ The module is based on a structured database schema with the **Grade** table, co
 8. **device_allowance**  
    - Only eligible for employees working on-site.
 
-9. **sales_bonus_allowance**  
+9. **sales_bonus_rate**  
    - Only eligible for employees in the sales department (varies by grade).
 
 10. **loyalty_allowance**  
    - All employees are eligible, but the amount depends on every 3 years of service.
-
-11. **is_sales**
-   - To identify whether the employee is sales or not
 ---
