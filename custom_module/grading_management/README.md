@@ -82,4 +82,6 @@ The module is based on a structured database schema with the **Grade** table, co
 10. **loyalty_allowance**  
    - All employees are eligible, but the amount depends on every 3 years of service.
 
+11. **is_sales**
+   - To identify whether the employee is sales or not
 ---

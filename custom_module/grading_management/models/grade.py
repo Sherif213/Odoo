@@ -5,15 +5,12 @@ class Grade(models.Model):
     _description = 'Grade'
 
     #general information
-    name = fields.Char(string='Name', required= "1" , default = "New Grade")
     grade_number = fields.Integer(string='Grade Number', required=True,default = 1)
 
+    #Constant Information
+    medical_allowance = fields.Float(string='Medical Allowance', required=True,default = 0.0)
+    internal_allowance = fields.Float(string='Internal Allowance', required=True,default = 0.0)
 
-    #Information regarding salary and performance
-    travel_allowance = fields.Float(string='Allowance', required= "1" ,default= 0.0 )
-    mobile_allowance = fields.Float(string='Mobile', required= "1" ,default= 0.0 )
-    food_allowance = fields.Float(string='Food', required= "1" ,default= 0.0 )
-    medical_allowance = fields.Float(string='Medical', required= "1" ,default= 0.0 )
-    has_medical = fields.Boolean(string='Has Medical', required= "1" ,default= False )
-    
+
+
     
