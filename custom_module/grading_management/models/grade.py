@@ -14,6 +14,6 @@ class Grade(models.Model):
     mobile_allowance = fields.Float(string='Mobile', required= "1" ,default= 0.0 )
     food_allowance = fields.Float(string='Food', required= "1" ,default= 0.0 )
     medical_allowance = fields.Float(string='Medical', required= "1" ,default= 0.0 )
-    overtime_allowance = fields.Float(string='Overtime', required= "1" ,default= 0.0 )
-
+    has_medical = fields.Boolean(string='Has Medical', required= "1" ,default= False )
+    
     
