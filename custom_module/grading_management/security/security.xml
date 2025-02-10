@@ -1,0 +1,7 @@
+<odoo>
+    <record id="hr_access" model="res.groups">
+        <field name="name">Hr Access</field>
+        <field name="category_id" ref="base.module_category_usability"/>
+    </record>
+
+</odoo>

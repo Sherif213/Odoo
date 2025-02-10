@@ -6,6 +6,7 @@
     "category": "Training",
     "depends": ["base",'mail'],
     "data": [
+        "security/security.xml",
         "security/ir.model.access.csv",
         "views/base_menu.xml",
         "views/grade_view.xml",
