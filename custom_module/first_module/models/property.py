@@ -36,5 +36,9 @@ class Property(models.Model):
            if rec.bedrooms == 0:
                raise ValidationError('Bedrooms cannot be zero')
 
-
+    @api.model_create_multi
+    def create(self,vals):
+        res = super(Property,self).create(vals)
+        #logic
+        return res
 
