@@ -4,7 +4,7 @@
         <field name = "name">grade_tree</field>
         <field name = "model">grade</field>
         <field name = "arch" type="xml">
-            <tree>
+            <tree multi_edit="1" create="1" edit="1" delete="1">
                 <field name = "grade_number"/>
                 <field name = "medical_allowance"/>
                 <field name = "internet_allowance"/>

@@ -82,3 +82,42 @@ The module is based on a structured database schema with the **Grade** table, co
 10. **loyalty_allowance**  
    - All employees are eligible, but the amount depends on every 3 years of service.
 ---
+## SQL Constraints  
+
+We have two types of constraints: **SQL constraints**, which apply constraints in the data tier.  
+The constraints can be written like this:  
+
+```python
+SQL_constraints = [(name, sql_def, message)]
+```
+
+SQL constraints can be either **NOT NULL**, **UNIQUE**, or **CHECK**.  
+
+## Python Constraints  
+
+We also have another type of constraint used to guarantee **data uniformity** in the logic code.  
+These constraints are exclusive to **Python** and are implemented using the `@api.constrains` decorator,  
+which allows functions to verify the inputted data.  
+
+## Application Tier Constraints  
+
+Additionally, we have constraints on the **application tier**, but it is the weakest one among all.  
+I did not use it in my code.  
+
+## Security Access  
+
+Security access contains permissions for **reading, writing, creating, and deleting (CRUD)**.  
+It can be applied at different levels:  
+
+- **Presentation Layer**: Can be applied to **tree view** or **form view**.  
+- **Logic Tier**: Controls access within the backend logic.  
+- **User-based Restrictions**: Can be applied for each user using the database.  
+
+## Hosted Localhost  
+
+My localhost is hosted online at:  
+[https://9555-78-163-113-14.ngrok-free.app/web/login](https://9555-78-163-113-14.ngrok-free.app/web/login)  
+
+### Admin Credentials:  
+- **Username**: `admin`  
+- **Password**: `admin`  
