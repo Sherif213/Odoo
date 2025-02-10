@@ -36,5 +36,3 @@ class Property(models.Model):
            if rec.bedrooms == 0:
                raise ValidationError('Bedrooms cannot be zero')
 
-
-
