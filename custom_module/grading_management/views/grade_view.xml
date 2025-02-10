@@ -1,0 +1,98 @@
+<odoo>
+
+    <record id = "grade_view_tree" model ="ir.ui.view">
+        <field name = "name">grade_tree</field>
+        <field name = "model">grade</field>
+        <field name = "arch" type="xml">
+            <tree>
+                <field name = "grade_number"/>
+                <field name = "medical_allowance"/>
+                <field name = "internet_allowance"/>
+                <field name = "insurance"/>
+                <field name = "female_allowance" optional="1"/>
+                <field name = "travel_allowance" optional = "1"/>
+                <field name = "food_allowance" optional="1"/>
+                <field name = "device_allowance" optional="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id = "grade_view_search" model ="ir.ui.view">
+        <field name = "name">grade search</field>
+        <field name = "model">grade</field>
+        <field name = "arch" type="xml">
+            <search>
+                <field name = "grade_number"/>
+<!--                <field name = "internet_allowance"/>-->
+            </search>
+        </field>
+    </record>
+
+    <record id="grade_view_from" model ="ir.ui.view">
+        <field name = "name">Grade form</field>
+        <field name = "model">grade</field>
+        <field name = "arch" type="xml">
+        <form>
+               <sheet>
+                   <div class="oe_title">
+                       <label for="grade_number"/>
+                       <h1>
+                           <field name="grade_number"/>
+                       </h1>
+                   </div>
+                   <group>
+                       <group string = "Constant Info.">
+                           <field name = "medical_allowance" required = "1"/>
+                           <field name = "internet_allowance"/>
+                           <field name = "insurance"/>
+                       </group>
+                       <group string = "Changing Allowance by gender.">
+                           <field name = "female_allowance" />
+                       </group>
+                   </group>
+                   <group>
+
+                       <group string="Changing Allowance in Sales">
+                           <field name="sales_bonus_entry_rate" />
+                           <field name="sales_bonus_senior_rate" />
+                           <field name="sales_bonus_specialist_rate" />
+                            <field name="sales_bonus_manager_rate" />
+
+                       </group>
+                       <group string="Changing allowance according to work status">
+                           <field name="travel_allowance" />
+                           <field name="food_allowance" />
+                           <field name="device_allowance" />
+
+                       </group>
+                   </group>
+
+                   <group string="Changing allowance according to loyality">
+                       <field name="loyality_allowance_Entry" />
+                       <field name="loyality_allowance_senior" />
+                       <field name="loyality_allowance_specialist" />
+                       <field name="loyality_allowance_manager" />
+
+                   </group>
+               </sheet>
+            <div class = "oe_chatter">
+                <field name = "message_follower_ids"/>
+                <field name = "activity_ids"/>
+                <field name = "message_ids"/>
+            </div>
+
+            </form>
+        </field>
+    </record>
+    <record id="grading_action" model = "ir.actions.act_window">
+        <field name = "name">Add new grade</field>
+        <field name = "res_model">grade</field>
+    </record>
+
+    <menuitem
+            id = "grading_menu_item"
+            name = "Grade"
+            parent = "grade_menu"
+            action = "grading_action"
+    />
+</odoo>
