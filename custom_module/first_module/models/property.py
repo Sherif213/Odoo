@@ -24,6 +24,11 @@ class Property(models.Model):
         ('west','West'),
     ],default = 'north')
 
+    _sql_constraints = [
+        ('unique_for_name','unique("name")','The name must be unique.'),
+
+
+    ]
 
     @api.constrains('bedrooms')
     def _check_bedrooms_greater_zero(self):
@@ -31,23 +36,3 @@ class Property(models.Model):
            if rec.bedrooms == 0:
                raise ValidationError('Bedrooms cannot be zero')
 
-
-    @api.model_create_multi
-    def create(self,vals):
-        res = super(Property,self).create(vals)
-        #logic
-        return res
-
-    @api.model
-    def _search(self,domain,offset=0,limit=None,order=None,access_rights_uid=None):
-        res = super(Property,self)._search(domain,offset,limit,order,access_rights_uid)
-        return res
-
-
-    def write(self,vals):
-        res = super(Property,self).write(vals)
-        return res
-
-    def unlink(self):
-        res = super(Property,self).unlink()
-        return res
