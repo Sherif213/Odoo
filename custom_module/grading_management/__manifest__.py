@@ -10,6 +10,7 @@
         "security/ir.model.access.csv",
         "views/base_menu.xml",
         "views/grade_view.xml",
+        "views/employee_view.xml",
 
     ],
     "application": True,
