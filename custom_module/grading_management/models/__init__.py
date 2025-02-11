@@ -1,2 +1,2 @@
 from . import grade
-from . import employee
+from . import grading_wage

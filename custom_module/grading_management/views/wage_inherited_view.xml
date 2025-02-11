@@ -1,0 +1,23 @@
+<odoo>
+    <data>
+        <record id="wage_inherited_view" model="ir.ui.view">
+            <field name="name">hr.employee.view.form.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='personal_information']" position="after">
+                    <page name="salary_info" string="Salary Information">
+                        <group>
+                            <field name="wage_amount" string="Wage" required="True"/>
+                        </group>
+                    </page>
+                </xpath>
+                <xpath expr="//field[@name='job_title']" position="after">
+                    <div style="margin-top: 10px;">
+                        <field name="grade_id" />
+                    </div>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
