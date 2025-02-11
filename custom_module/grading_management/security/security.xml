@@ -1,7 +1,12 @@
 <odoo>
+    <record model="ir.module.category" id="grading_system">
+        <field name="name">Grading System</field>
+        <field name="description">Category For Grading</field>
+    </record>
     <record id="hr_access" model="res.groups">
         <field name="name">Hr Access</field>
-        <field name="category_id" ref="base.module_category_usability"/>
+        <field name="category_id" ref="grading_system"/>
     </record>
+
 
 </odoo>

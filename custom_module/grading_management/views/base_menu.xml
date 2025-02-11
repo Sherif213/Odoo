@@ -10,5 +10,11 @@
             parent = "grade_management_root_menu"
 
     />
+    <menuitem
+            id = "employee_menu"
+            name = "Employee"
+            parent = "grade_management_root_menu"
+
+    />
 
 </odoo>
