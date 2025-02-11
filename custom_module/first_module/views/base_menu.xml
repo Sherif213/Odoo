@@ -10,5 +10,11 @@
             parent = "real_estate_root_menu"
 
     />
+    <menuitem
+            id = "owner_menu"
+            name = "Owner"
+            parent = "real_estate_root_menu"
+
+    />
 
 </odoo>
