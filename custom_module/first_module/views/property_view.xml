@@ -9,6 +9,7 @@
                 <field name = "date_availability"/>
                 <field name = "selling_price"/>
                 <field name = "garden"/>
+                <field name = "owner_id"/>
                 <field name = "bedrooms" optional = "1"/>
                 <field name = "garage" optional="1"/>
 
@@ -67,6 +68,7 @@
 
                    <group string="Annex">
                        <field name="description" required = "1"/>
+                       <field name = "owner_id"/>
                    </group>
                </sheet>
             </form>
