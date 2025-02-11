@@ -24,6 +24,9 @@ class Property(models.Model):
         ('west','West'),
     ],default = 'north')
 
+    owner_id = fields.Many2one('owner', string='Owner')
+
+
     _sql_constraints = [
         ('unique_for_name','unique("name")','The name must be unique.'),
 
