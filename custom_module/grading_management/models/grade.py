@@ -8,7 +8,7 @@ class Grade(models.Model):
     _description = 'Grade'
 
     # general information
-    grade_number = fields.Integer(string='Grade Number', required=True, default=1)
+    name = fields.Integer(string='Grade Number', required=True, default=1)
 
     # Constant Information
     medical_allowance = fields.Float(string='Medical Allowance', required=True, default=0.0)
@@ -35,9 +35,10 @@ class Grade(models.Model):
     loyality_allowance_specialist = fields.Float(string='Loyalty Allowance Specialist', required=True, default=0.0)
     loyality_allowance_manager = fields.Float(string='Loyalty Allowance Manager', required=True, default=0.0)
 
+    employee_ids = fields.One2many('hr.employee', 'grade_id', 'Employees')
 
     _sql_constraints = [
-        ('grade_uniqueness', 'unique("grade_number")', 'Grade number must be unique!'),
+        ('grade_uniqueness', 'unique("name")', 'Grade number must be unique!'),
     ]
 
     @api.constrains('medical_allowance', 'internet_allowance', 'insurance')

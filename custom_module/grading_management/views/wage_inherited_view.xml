@@ -7,15 +7,46 @@
             <field name="arch" type="xml">
                 <xpath expr="//page[@name='personal_information']" position="after">
                     <page name="salary_info" string="Salary Information">
+                        <group string="On_site">
+                            <field name="On_site" string="On Site" required="True"/>
+
+                        </group>
                         <group>
-                            <field name="wage_amount" string="Wage" required="True"/>
+                            <group string="Salary">
+                                <field name="wage_amount" string="Wage" required="True"/>
+                                <field name="gender_status" invisible="1"/>
+                            </group>
+                            <group string="Salary + Allowances">
+                                <field name="total_package_amount" string="Total Package" required="True"/>
+                            </group>
+                        </group>
+
+                        <group>
+                            <group string="Constant" >
+                                <field name="medical_allowance" string="Medical Allowance" required="True"/>
+                                <field name="internet_allowance" string="Internet Allowance" required="True"/>
+                                <field name="insurance" string="Insurance" required="True"/>
+                            </group>
+
+                            <group string="Gender" invisible="gender_status == False">
+
+                                <field name="female_allowance" string="Female Allowance" required="True"/>
+                            </group>
+
+                        </group>
+                        <group>
+                            <group string="On_site" invisible="On_site == False">
+                                <field name="travel_allowance" string="Travel Allowance" required="True"/>
+                                <field name="food_allowance" string="Food Allowance" required="True"/>
+                                <field name="device_allowance" string="Device Allowance" required="True"/>
+                            </group>
                         </group>
                     </page>
                 </xpath>
                 <xpath expr="//field[@name='job_title']" position="after">
-                    <div style="margin-top: 10px;">
-                        <field name="grade_id" />
-                    </div>
+                    <group>
+                        <field name="grade_id" string="Grade" />
+                    </group>
                 </xpath>
             </field>
         </record>
