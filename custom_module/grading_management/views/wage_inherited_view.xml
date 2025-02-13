@@ -46,9 +46,24 @@
                 <xpath expr="//field[@name='job_title']" position="after">
                     <group>
                         <field name="grade_id" string="Grade" />
+                        <field name="ref"/>
                     </group>
                 </xpath>
+                <xpath expr="//field[@name='visa_expire']" position="after">
+                    <field name="visa_status"/>
+                </xpath>
             </field>
+        </record>
+        <record id="visa_expiring_checking" model="ir.cron">
+            <field name="name">Employee : Checking Visa</field>
+            <field name="model_id" ref="model_hr_employee"/>
+            <field name="binding_model_id" ref="model_hr_employee"/>
+            <field name="state">code</field>
+            <field name="code">model.check_expiration_date()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">weeks</field>
+            <field name="numbercall">-1</field>
+            <field name="active">True</field>
         </record>
     </data>
 </odoo>
