@@ -8,6 +8,7 @@ class Grade(models.Model):
     _description = 'Grade'
 
     # general information
+
     name = fields.Integer(string='Grade Number', required=True, default=1)
 
     # Constant Information

@@ -1,11 +1,21 @@
 from odoo import models, fields, api
+from odoo.tools.safe_eval import datetime
 
 
 class GradingWage(models.Model):
     _inherit = 'hr.employee'
     grade_id = fields.Many2one('grade', string='Grade')
+    ref = fields.Char(default='New', readonly=True)
+
     wage_amount = fields.Float('Wage Amount')
     total_package_amount = fields.Float('Total Package', compute='_compute_total_package_amount')
+
+    # visa
+    visa_status = fields.Selection([
+        ('expiring_soon', 'Expiring Soon'),
+        ('expired', 'Expired'),
+        ('valid', 'Valid')
+    ], readonly=True)
 
     On_site = fields.Boolean('On Site', default=False)
     gender_status = fields.Boolean('Gender Status', default=False)
@@ -54,7 +64,7 @@ class GradingWage(models.Model):
     def _compute_total_package_amount(self):
         for record in self:
             record.total_package_amount = (
-                    self.wage_amount
+                    record.wage_amount
                     + record.medical_allowance
                     + record.internet_allowance
                     + record.insurance
@@ -135,3 +145,34 @@ class GradingWage(models.Model):
     def _compute_loyality_allowance_manager(self):
         for record in self:
             record.loyality_allowance_manager = record.grade_id.loyality_allowance_manager if record.grade_id else 0.0
+
+    @api.model
+    def create(self, vals):
+        res = super(GradingWage, self).create(vals)
+        if res.ref == 'New':
+            res.ref = self.env['ir.sequence'].next_by_code('employee_sequence')
+        return res
+
+    @api.model
+    def write(self, vals):
+        res = super(GradingWage, self).write(vals)
+
+        for record in self:
+            if record.ref == 'New':
+                record.ref = self.env['ir.sequence'].next_by_code('employee_sequence')
+
+        return res
+
+    def check_expiration_date(self):
+        employee_ids = self.search([])
+        today = datetime.date.today()
+        for employee_id in employee_ids:
+            if not employee_id.visa_expire:
+                continue
+            visa_date = employee_id.visa_expire
+            if visa_date < today:
+                employee_id.visa_status = 'expired'
+            elif 0 <= (visa_date - today).days < 30:
+                employee_id.visa_status = 'expiring_soon'
+            else:
+                employee_id.visa_status = 'valid'

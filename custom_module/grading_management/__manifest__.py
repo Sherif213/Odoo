@@ -8,6 +8,7 @@
     "data": [
         "security/security.xml",
         "security/ir.model.access.csv",
+        "data/sequence.xml",
         "views/base_menu.xml",
         "views/grade_view.xml",
         "views/wage_inherited_view.xml"
