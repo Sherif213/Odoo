@@ -29,8 +29,6 @@ class Property(models.Model):
 
     _sql_constraints = [
         ('unique_for_name','unique("name")','The name must be unique.'),
-
-
     ]
 
     @api.constrains('bedrooms')
